@@ -1,0 +1,14 @@
+{
+	"name": "schedule-API",
+	"description": "API to handle the Scedulue meeting App",
+	"version": "0.1.0",
+	"scripts": {
+		"start": "node core.js"
+	},
+	"framework": "none",
+	"dependencies": {
+		"express": "4.x",
+		"body-parser": "1.x",
+		"acs-node" : ">=0.9.2"
+	}
+}
