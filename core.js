@@ -9,7 +9,8 @@ var express = require('express'),
 	bodyParser = require('body-parser'),
 	port = process.env.PORT || 8080,
 	usersController = require('./controllers/users'),
-	ACS = require('acs-node');
+	ACS = require('acs-node'),
+	acsKey = 'rzzoCnPCtudA9srw80a3YGVCVop4F1gh';
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -19,7 +20,7 @@ app.use(bodyParser.urlencoded({
 app.use(bodyParser.json());
 
 //setting the Appcelerator cloud service key
-ACS.init('rzzoCnPCtudA9srw80a3YGVCVop4F1gh');
+ACS.init(acsKey);
 
 //ROUTES FOR OUR API
 //==========================================================

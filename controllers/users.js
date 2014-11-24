@@ -24,7 +24,6 @@ var usersController = (function(){
 		});
 	};
 
-
 	//----------------
 	// Public API
 	//----------------
