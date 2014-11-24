@@ -7,7 +7,9 @@
 var express = require('express'),
 	app 	= express(),
 	bodyParser = require('body-parser'),
-	port = process.env.PORT || 8080;
+	port = process.env.PORT || 8080,
+	usersController = require('./controllers/users'),
+	ACS = require('acs-node');
 
 // configure app to use bodyParser()
 // this will let us get the data from a POST
@@ -16,19 +18,25 @@ app.use(bodyParser.urlencoded({
 }));
 app.use(bodyParser.json());
 
+//setting the Appcelerator cloud service key
+ACS.init('rzzoCnPCtudA9srw80a3YGVCVop4F1gh');
+
 //ROUTES FOR OUR API
 //==========================================================
 var router = express.Router();  //get an instance of the express router
 
 // Middleware to use for all requests
-//=================STUDENTS=========================
-router.route('/students')
-.post(studentsController.addStudent)
-.put(studentsController.updateStudent);
+//=================Users=========================
+router.route('/Users')
+.post(usersController.createUser);
+//.put(studentsController.updateStudent);
 
-router.route('/students/:studentId')
+/*router.route('/Users/:userId')
 .get(studentsController.getStudent)
-.delete(studentsController.deleteStudent);
+.delete(studentsController.deleteStudent);*/
+	
+router.route('/Users/login')
+.post(usersController.login);
 
 //Register our routes
 app.use('/API', router);
